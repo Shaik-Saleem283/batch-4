@@ -1,4 +1,5 @@
 const express = require('express');
+const { sendResponse } = require('../middleware/middleware');
 const router = express.Router();
 const resetUsers = () => { users = []; };
 
@@ -6,14 +7,7 @@ const resetUsers = () => { users = []; };
 // In-memory user store
 let users = [];
  
-// Helper function to standardize response format
-const sendResponse = (res, statusCode, message, data = null) => {
-    return res.status(statusCode).json({
-        statusCode,
-        message,
-        data,
-    });
-};
+
  
 // Create user
 router.post('/', (req, res) => {
